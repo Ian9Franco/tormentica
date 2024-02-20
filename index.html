@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tormentica</title>
+    <!-- 
+        - primary meta tags
+     -->
+    <meta name="title" content="tormentica">
+    <meta name="description" content="tormentica is a weather app made by ian franco collada pontorno">
+
+     <!-- 
+        -favicon
+     -->
+     <link rel="shortcut icon" href="/favicon.svg" type="images/svg+xml">
+     <!-- 
+        -google font link 
+     -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+     <!--
+        - custom css link
+     -->
+     <link rel="stylesheet" href="./assets/css/style.css">
+
+     <!-- 
+        -custom js link
+     -->
+     <script src="./assets/js/app.js" type="module"></script>
+     <script src="./assets/js/route.js" type="module"></script>
+     
+
+
+
+</head>
+
+
+<body>
+    <!-- 
+      -#Header
+    -->
+    <header class="header">
+      <div class="container">
+         <a href="#" class="logo">
+            <img src="./assets/images/logo2.png" width="364" height="58" 
+            alt="logo">
+         </a>
+
+         <div class="search-view" data-search-view>
+
+            <div class="search-wrapper">
+               <input type="search" name="search" placeholder="Search city..."
+               autocomplete="off" class="search-field"
+                data-search-field>
+
+                <span class="m-icon">search</span>
+
+                <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                  <span class="m-icon">arrow_back</span>
+               </button>
+            </div>
+            
+            <div class="search-result" data-search-result>
+               <ul class="view-list" data-search-list>
+
+                  <li class="view-item">
+                     <span class="m-icon">location_on</span>
+
+                     <div>
+                        <p class="item-title">London</p>
+
+                        <p class="label-2 item-subtitle">State of London, GB</p>
+                     </div>
+
+                     <a href="#" class="item-link has-state" data-search-toggler>  
+                     </a>
+
+                  </li>
+
+               </ul>
+
+            </div>
+   
+         </div>
+
+         <div class="header-actions">
+
+            <button class="icon-btn has-state" aria-label="open search"
+             data-search-toggler>
+               <span class="m-icon icon">search</span>
+            </button>
+
+            <a href="#/current-location" class="btn-primary has-state" 
+            data-current-location-btn>
+               <span class="m-icon">my_location</span>
+
+               <span class="span">Current Location</span>
+            </a>
+
+         </div>
+         
+      </div>
+    </header>
+
+
+    <main>
+      <article class="container">
+         <div class="content-left">
+            <!--
+               -#CLIMA ALCUTAL
+            -->
+
+            <section class="section current-weather" aria-label="current weather" data-current.weather>
+               <div class="card card-lg current-weather-card">
+
+                  <h2 class="title-2 card-title">Now</h2>
+
+                  <div class="weapper">
+                     <p class="heading">25&deg;<sup>c</sup></p>
+
+                     <img src="./assets/images/weather_icons/01d.png" width="64"
+                     height="64" alt="Overcast Clouds"
+                      class="weather-icon">
+                  </div>
+
+                  <p class="body-3">Overcast Clouds</p>
+                  <ul class="meta-list">
+                     <li class="meta-item">
+                        <span class="m-icon">calendar_today</span>
+
+                        <p class="title-3 meta-text">Thursday 16, Feb</p>
+                     </li>
+
+                     <li class="meta-item">
+                        <span class="m-icon">location_on</span>
+
+                        <p class="title-3 meta-text">London, GB</p>
+                     </li>
+
+
+                  </ul>
+
+               </div>
+            </section>
+         </div>
+      </article>
+    </main>
+
+
+</body>
+</html>
