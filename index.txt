@@ -1,5 +1,5 @@
-weatherio
-weatherio is a weather app made by ian franco collada pontorno
+Tormentica
+Tormentica is a weather app made by ian franco collada pontorno
 
 
 #---------- HEADER ----------#
