@@ -56,7 +56,7 @@
                autocomplete="off" class="search-field"
                 data-search-field>
 
-                <span class="m-icon">search</span>
+                <span class="m-icon leading-icon">search</span>
 
                 <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
                   <span class="m-icon">arrow_back</span>
@@ -287,11 +287,7 @@
 
                               <p class="label-1">PM<sub>2.5</sub></p>
                            </li>
-                           <li class="card-item">
-                              <p class="title-1">23.3</p>
 
-                              <p class="label-1">PM<sub>2.5</sub></p>
-                           </li>
 
                         </ul>
 
@@ -391,7 +387,7 @@
             #pronostico por hora
          -->
 
-         <div class="section hourly-forecast" aria-label="hourly forecast"
+         <section class="section hourly-forecast" aria-label="hourly forecast"
          data-hourly-forecast>
 
             <h2 class="title-2">Today at</h2>
@@ -583,8 +579,8 @@
 
             </div>
 
-         </div>
-         </div>
+         </section>
+         
 
          <!--
             #footer
@@ -603,10 +599,33 @@
                </a>
             </p>
          </footer>
+         </div>
+
+         <div class="loading" data-loading></div>
+
 
 
       </article>
     </main>
+
+
+
+
+    <!-- 
+      #404 ERROR
+    -->
+
+    <section class="error-content" data-error-content>
+
+      <h2 class="heading">404</h2>
+
+      <p class="body-1">Page not found!</p>
+
+      <a href="#" class="btn-primary">
+         <span class="span">Go Home</span>
+      </a>
+    
+   </section>
 
 
 </body>
