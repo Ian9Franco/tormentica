@@ -344,7 +344,7 @@ fetchData(url.currentWeather(lat, lon), function (currentWeather) {
       } = forecast;
 
       hourlySection.innerHTML = `
-        <h2 class="title-2">Today at</h2>
+        <h2 class="title-2">Hoy a las</h2>
 
         <div class="slider-container">
           <ul class="slider-list" data-temp></ul>
@@ -405,7 +405,7 @@ fetchData(url.currentWeather(lat, lon), function (currentWeather) {
        * 5 DAY FORECAST SECTION
        */
       forecastSection.innerHTML = `
-        <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+        <h2 class="title-2" id="forecast-label">Pronóstico de 5 días</h2>
 
         <div class="card card-lg forecast-card">
           <ul data-forecast-list></ul>
