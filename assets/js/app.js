@@ -126,57 +126,64 @@ export const updateWeather = function (lat, lon) {
   }
 
   /**
-   * CURRENT WEATHER SECTION
-   */
-  fetchData(url.currentWeather(lat, lon), function (currentWeather) {
+ * SECCIÓN DEL CLIMA ACTUAL
+ */
 
-    const {
-      weather,
-      dt: dateUnix,
-      sys: { sunrise: sunriseUnixUTC, sunset: sunsetUnixUTC },
-      main: { temp, feels_like, pressure, humidity },
-      visibility,
-      timezone
-    } = currentWeather
-    const [{ description, icon }] = weather;
 
-    const card = document.createElement("div");
-    card.classList.add("card", "card-lg", "current-weather-card");
 
-    card.innerHTML = `
-      <h2 class="title-2 card-title">Now</h2>
+fetchData(url.currentWeather(lat, lon), function (currentWeather) {
 
-      <div class="weapper">
-        <p class="heading">${parseInt(temp)}&deg;<sup>c</sup></p>
+  const {
+    weather,
+    dt: dateUnix,
+    sys: { sunrise: sunriseUnixUTC, sunset: sunsetUnixUTC },
+    main: { temp, feels_like, pressure, humidity },
+    visibility,
+    timezone
+  } = currentWeather;
+  const [{ description, icon }] = weather;
 
-        <img src="./assets/images/weather_icons/${icon}.png" width="64" height="64" alt="${description}"
-          class="weather-icon">
-      </div>
+  const card = document.createElement("div");
+  card.classList.add("card", "card-lg", "current-weather-card");
 
-      <p class="body-3">${description}</p>
+  card.innerHTML = `
+    <h2 class="title-2 card-title">Ahora</h2>
 
-      <ul class="meta-list">
+    <div class="weapper">
+      <p class="heading">${parseInt(temp)}&deg;<sup>C</sup></p>
+    
+      <img src="./assets/images/weather_icons/${icon}.png" width="64" height="64" alt="${description}"
+        class="weather-icon">
+    </div>
+    
+    <p class="body-3">${description}</p>
+    
+    <ul class="meta-list">
+    
+      <li class="meta-item">
+        <span class="m-icon">calendar_today</span>
+    
+        <p class="title-3 meta-text">${module.getDate(dateUnix, timezone)}</p>
+      </li>
+    
+      <li class="meta-item">
+        <span class="m-icon">location_on</span>
+    
+        <p class="title-3 meta-text" data-location></p>
+      </li>
+    
+    </ul>
+  `;
 
-        <li class="meta-item">
-          <span class="m-icon">calendar_today</span>
+  fetchData(url.reverseGeo(lat, lon), function ([{ name, country }]) {
+    card.querySelector("[data-location]").innerHTML = `${name}, ${country}`;
+  });
 
-          <p class="title-3 meta-text">${module.getDate(dateUnix, timezone)}</p>
-        </li>
+  currentWeatherSection.appendChild(card);
 
-        <li class="meta-item">
-          <span class="m-icon">location_on</span>
+  /** Resto del código aquí */
 
-          <p class="title-3 meta-text" data-location></p>
-        </li>
 
-      </ul>
-    `;
-
-    fetchData(url.reverseGeo(lat, lon), function ([{ name, country }]) {
-      card.querySelector("[data-location]").innerHTML = `${name}, ${country}`
-    });
-
-    currentWeatherSection.appendChild(card);
 
     /**
      * TODAY'S HIGHLIGHTS
@@ -192,133 +199,134 @@ export const updateWeather = function (lat, lon) {
       card.classList.add("card", "card-lg");
 
       card.innerHTML = `
-        <h2 class="title-2" id="highlights-label">Todays Highlights</h2>
+      <h2 class="title-2" id="highlights-label">Aspectos Destacados del Día</h2>
 
-        <div class="highlight-list">
-
-          <div class="card card-sm highlight-card one">
-
-            <h3 class="title-3">Air Quality Index</h3>
-
-            <div class="wrapper">
-
-              <span class="m-icon">air</span>
-
-              <ul class="card-list">
-
-                <li class="card-item">
-                  <p class="title-1">${pm2_5.toPrecision(3)}</p>
-
-                  <p class="label-1">PM<sub>2.5</sub></p>
-                </li>
-
-                <li class="card-item">
-                  <p class="title-1">${so2.toPrecision(3)}</p>
-
-                  <p class="label-1">SO<sub>2</sub></p>
-                </li>
-
-                <li class="card-item">
-                  <p class="title-1">${no2.toPrecision(3)}</p>
-
-                  <p class="label-1">NO<sub>2</sub></p>
-                </li>
-
-                <li class="card-item">
-                  <p class="title-1">${o3.toPrecision(3)}</p>
-
-                  <p class="label-1">O<sub>3</sub></p>
-                </li>
-
-              </ul>
-
-            </div>
-
-            <span class="badge aqi-${aqi} label-${aqi}" title="${module.aqiText[aqi].message}">
-              ${module.aqiText[aqi].level}
-            </span>
-
+      <div class="highlight-list">
+      
+        <div class="card card-sm highlight-card one">
+      
+          <h3 class="title-3">Índice de Calidad del Aire</h3>
+      
+          <div class="wrapper">
+      
+            <span class="m-icon">air</span>
+      
+            <ul class="card-list">
+      
+              <li class="card-item">
+                <p class="title-1">${pm2_5.toPrecision(3)}</p>
+      
+                <p class="label-1">PM<sub>2.5</sub></p>
+              </li>
+      
+              <li class="card-item">
+                <p class="title-1">${so2.toPrecision(3)}</p>
+      
+                <p class="label-1">SO<sub>2</sub></p>
+              </li>
+      
+              <li class="card-item">
+                <p class="title-1">${no2.toPrecision(3)}</p>
+      
+                <p class="label-1">NO<sub>2</sub></p>
+              </li>
+      
+              <li class="card-item">
+                <p class="title-1">${o3.toPrecision(3)}</p>
+      
+                <p class="label-1">O<sub>3</sub></p>
+              </li>
+      
+            </ul>
+      
           </div>
-
-          <div class="card card-sm highlight-card two">
-
-            <h3 class="title-3">Sunrise & Sunset</h3>
-
-            <div class="card-list">
-
-              <div class="card-item">
-                <span class="m-icon">clear_day</span>
-
-                <div>
-                  <p class="label-1">Sunrise</p>
-
-                  <p class="title-1">${module.getTime(sunriseUnixUTC, timezone)}</p>
-                </div>
-              </div>
-
-              <div class="card-item">
-                <span class="m-icon">clear_night</span>
-
-                <div>
-                  <p class="label-1">Sunset</p>
-
-                  <p class="title-1">${module.getTime(sunsetUnixUTC, timezone)}</p>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="card card-sm highlight-card">
-
-            <h3 class="title-3">Humidity</h3>
-
-            <div class="wrapper">
-              <span class="m-icon">humidity_percentage</span>
-
-              <p class="title-1">${humidity}<sub>%</sub></p>
-            </div>
-
-          </div>
-
-          <div class="card card-sm highlight-card">
-
-            <h3 class="title-3">Pressure</h3>
-
-            <div class="wrapper">
-              <span class="m-icon">airwave</span>
-
-              <p class="title-1">${pressure}<sub>hPa</sub></p>
-            </div>
-
-          </div>
-
-          <div class="card card-sm highlight-card">
-
-            <h3 class="title-3">Visibility</h3>
-
-            <div class="wrapper">
-              <span class="m-icon">visibility</span>
-
-              <p class="title-1">${visibility / 1000}<sub>km</sub></p>
-            </div>
-
-          </div>
-
-          <div class="card card-sm highlight-card">
-
-            <h3 class="title-3">Feels Like</h3>
-
-            <div class="wrapper">
-              <span class="m-icon">thermostat</span>
-
-              <p class="title-1">${parseInt(feels_like)}&deg;<sup>c</sup></p>
-            </div>
-
-          </div>
-
+      
+          <span class="badge aqi-${aqi} label-${aqi}" title="${module.aqiText[aqi].message}">
+            ${module.aqiText[aqi].level}
+          </span>
+      
         </div>
+      
+        <div class="card card-sm highlight-card two">
+      
+          <h3 class="title-3">Salida y Puesta del Sol</h3>
+      
+          <div class="card-list">
+      
+            <div class="card-item">
+              <span class="m-icon">clear_day</span>
+      
+              <div>
+                <p class="label-1">Salida del Sol</p>
+      
+                <p class="title-1">${module.getTime(sunriseUnixUTC, timezone)}</p>
+              </div>
+            </div>
+      
+            <div class="card-item">
+              <span class="m-icon">clear_night</span>
+      
+              <div>
+                <p class="label-1">Puesta del Sol</p>
+      
+                <p class="title-1">${module.getTime(sunsetUnixUTC, timezone)}</p>
+              </div>
+            </div>
+      
+          </div>
+      
+        </div>
+      
+        <div class="card card-sm highlight-card">
+      
+          <h3 class="title-3">Humedad</h3>
+      
+          <div class="wrapper">
+            <span class="m-icon">humidity_percentage</span>
+      
+            <p class="title-1">${humidity}<sub>%</sub></p>
+          </div>
+      
+        </div>
+      
+        <div class="card card-sm highlight-card">
+      
+          <h3 class="title-3">Presión</h3>
+      
+          <div class="wrapper">
+            <span class="m-icon">airwave</span>
+      
+            <p class="title-1">${pressure}<sub>hPa</sub></p>
+          </div>
+      
+        </div>
+      
+        <div class="card card-sm highlight-card">
+      
+          <h3 class="title-3">Visibilidad</h3>
+      
+          <div class="wrapper">
+            <span class="m-icon">visibility</span>
+      
+            <p class="title-1">${visibility / 1000}<sub>km</sub></p>
+          </div>
+      
+        </div>
+      
+        <div class="card card-sm highlight-card">
+      
+          <h3 class="title-3">Sensación Térmica</h3>
+      
+          <div class="wrapper">
+            <span class="m-icon">thermostat</span>
+      
+            <p class="title-1">${parseInt(feels_like)}&deg;<sup>C</sup></p>
+          </div>
+      
+        </div>
+      
+      </div>
+      
       `;
 
       highlightSection.appendChild(card);
@@ -442,6 +450,9 @@ export const updateWeather = function (lat, lon) {
 
   });
 
+
+
 }
 
 export const error404 = () => errorContent.style.display = "flex";
+

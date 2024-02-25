@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- 
-    - primary meta tags
+    - metaetiquetas principales
   -->
   <title>tormentica</title>
   <meta name="title" content="tormentica">
-  <meta name="description" content="tormentica is a weather app made by codewithsadee">
+  <meta name="description" content="tormentica es una aplicación meteorológica creada por ian9franco">
 
   <!-- 
     - favicon
@@ -19,19 +19,19 @@
   <link rel="shortcut icon" href="./fav_icon.svg" type="image/svg+xml">
 
   <!-- 
-    - google font link
+    - enlace de fuente de Google
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- 
-    - custom css link
+    - enlace de CSS personalizado
   -->
   <link rel="stylesheet" href="./assets/css/styles.css">
 
   <!-- 
-    - custom js link
+    - enlace de JS personalizado
   -->
   <script src="./assets/js/app.js" type="module"></script>
   <script src="./assets/js/route.js" type="module"></script>
@@ -53,12 +53,12 @@
       <div class="search-view" data-search-view>
 
         <div class="search-wrapper">
-          <input type="search" name="search" placeholder="Search city..." autocomplete="off" class="search-field"
+          <input type="search" name="search" placeholder="Buscar ciudad..." autocomplete="off" class="search-field"
             data-search-field>
 
           <span class="m-icon leading-icon">search</span>
 
-          <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+          <button class="icon-btn leading-icon has-state" aria-label="cerrar búsqueda" data-search-toggler>
             <span class="m-icon">arrow_back</span>
           </button>
         </div>
@@ -69,14 +69,14 @@
 
       <div class="header-actions">
 
-        <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
+        <button class="icon-btn has-state" aria-label="abrir búsqueda" data-search-toggler>
           <span class="m-icon icon">search</span>
         </button>
 
         <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
           <span class="m-icon">my_location</span>
 
-          <span class="span">Current Location</span>
+          <span class="span">Ubicación Actual</span>
         </a>
 
       </div>
@@ -93,20 +93,20 @@
 
       <div class="content-left">
         <!-- 
-          - #CURRENT WEATHER
+          - #TIEMPO ACTUAL
         -->
 
-        <section class="section current-weather" aria-label="current weather" data-current-weather></section>
+        <section class="section current-weather" aria-label="tiempo actual" data-current-weather></section>
 
 
 
 
 
         <!-- 
-          - #FORECAST
+          - #PRONÓSTICO
         -->
 
-        <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast></section>
+        <section class="section forecast" aria-labelledby="etiqueta-pronóstico" data-5-day-forecast></section>
       </div>
 
 
@@ -115,37 +115,37 @@
 
       <div class="content-right">
         <!-- 
-          - #HIGHLIGHTS
+          - #DESTACADOS
         -->
 
-        <section class="section highlights" aria-labelledby="highlights-label" data-highlights></section>
+        <section class="section highlights" aria-labelledby="etiqueta-destacados" data-highlights></section>
 
 
 
 
 
         <!-- 
-          - #HOURLY FORECAST
+          - #PRONÓSTICO POR HORA
         -->
 
-        <section class="section hourly-forecast" aria-label="hourly forecast" data-hourly-forecast></section>
+        <section class="section hourly-forecast" aria-label="pronóstico por hora" data-hourly-forecast></section>
 
 
 
 
 
         <!-- 
-          - #FOOTER
+          - #PIE DE PÁGINA
         -->
 
         <footer class="footer">
           <p class="body-3">
-            Copyright 2024 ian9franco. All Rights Reserved.
+            Derechos de autor © 2024 Ian Franco. Todos los derechos reservados.
           </p>
 
           <p class="body-3">
-            Powered By <a href="https://openweathermap.org/api" title="Free OpenWeather Api" target="_blank"
-              rel="noopener">
+            Powered by <a href="https://openweathermap.org/api" title="Api gratuita de OpenWeather"
+              target="_blank" rel="noopener">
               <img src="./assets/images/open.weather.png" width="150" height="30" loading="lazy" alt="OpenWeather">
             </a>
           </p>
@@ -164,17 +164,17 @@
 
 
   <!-- 
-    - #404 SECTION
+    - #SECCIÓN 404
   -->
 
   <section class="error-content" data-error-content>
 
     <h2 class="heading">404</h2>
 
-    <p class="body-1">Page not found!</p>
+    <p class="body-1">¡Página no encontrada!</p>
 
     <a href="#/weather?lat=51.5073219&lon=-0.1276474" class="btn-primary">
-      <span class="span">Go Home</span>
+      <span class="span">Ir a Inicio</span>
     </a>
 
   </section>
